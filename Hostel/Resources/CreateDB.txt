@@ -1,0 +1,25 @@
+CREATE TABLE Students(
+	[id] integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[fname] char(200) NOT NULL,
+	[sname] char(200) NOT NULL,
+	[patronymic] char(200) NOT NULL,
+	[birthdate] datetime NOT NULL,
+	[address] char(1000) NOT NULL,
+	[year] integer NOT NULL,
+	[idSpeciality] integer NULL,
+	[budget] integer NOT NULL,
+	[contractNum] integer NOT NULL,
+	[room] char(5) NOT NULL,
+	[isActive] integer NOT NULL DEFAULT(1),
+	[isRemoved] integer NOT NULL DEFAULT(0)
+);
+CREATE TABLE Faculty(
+	[id] integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[name] char(50) NOT NULL
+);
+CREATE TABLE Speciality(
+	[id] integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[idFaculty] integer NOT NULL,
+	[name] char(50) NOT NULL,
+	[duration] integer NOT NULL
+)
