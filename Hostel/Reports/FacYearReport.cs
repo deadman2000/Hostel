@@ -12,22 +12,30 @@ using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace Hostel.Reports
 {
-    static class FacYearReport
+    class FacYearReport : Report
     {
-        public static void Build(Faculty fac)
+        protected override string Template => "facyear";
+
+        private Faculty fac;
+
+        public FacYearReport(Faculty faculty)
+        {
+            fac = faculty;
+        }
+
+        protected override void FillContent()
         {
             if (fac == null) return;
 
             var facSt = Store.Inst.Students.Where(s => s.Speciality != null && s.Speciality.Faculty == fac);
             var byYear = facSt.GroupBy(s => s.Year).OrderBy(s => s.Key);
 
-            string fileName = ReportUtils.GetFilePath("facyear_" + DateTime.Now.ToString("ddMMyy-HHmmss") + ".xlsx");
-
             bool firstSheet = true;
             var now = DateTime.Now;
             string date = String.Format("на \"{0}\" {1}", now.Day, now.ToString("MMMM yyyy"));
 
             SLStyle stDate = new SLStyle { FormatCode = "DD.MM.YYYY" };
+            stDate.Alignment.Horizontal = HorizontalAlignmentValues.Center;
 
             SLStyle stHeader = new SLStyle();
             stHeader.Alignment.Horizontal = HorizontalAlignmentValues.Center;
@@ -46,61 +54,58 @@ namespace Hostel.Reports
             SLStyle stCenter = new SLStyle();
             stCenter.Alignment.Horizontal = HorizontalAlignmentValues.Center;
 
-            using (SLDocument sl = new SLDocument())
+            foreach (var kv in byYear)
             {
-                foreach (var kv in byYear)
+                string sheetName = kv.Key + " курс";
+                if (firstSheet)
+                    sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, sheetName);
+                else
+                    sl.AddWorksheet(sheetName);
+
+                sl.SetCellValue("H1", "Список студентов. Факультет " + fac.Name); sl.SetCellStyle("H1", stCenter);
+                sl.SetCellValue("H2", date); sl.SetCellStyle("H2", stCenter);
+
+                sl.SetCellValue("A4", "№");
+                sl.SetCellValue("B4", "ФИО студента");
+                sl.SetCellValue("C4", "Дата\nрождения");
+                sl.SetCellValue("D4", "Форма\nобучения");
+                sl.SetCellValue("E4", "Группа");
+                sl.SetCellValue("F4", "Договор");
+                sl.SetCellValue("G4", "Комната");
+                sl.SetCellValue("H4", "Адрес");
+                sl.SetCellValue("I4", "Паспортные данные (серия,№, кем и когда выдан)");
+                sl.SetCellStyle(4, 1, 4, 9, stHeader);
+                sl.AutoFitRow(4);
+
+                int num = 0;
+                var students = kv.OrderBy(s => s.SecondName);
+                foreach (var st in students)
                 {
-                    string sheetName = kv.Key + " курс";
-                    if (firstSheet)
-                        sl.RenameWorksheet(SLDocument.DefaultFirstSheetName, sheetName);
-                    else
-                        sl.AddWorksheet(sheetName);
+                    num++;
+                    int row = num + 4;
+                    sl.SetCellValue(row, 1, num);
+                    sl.SetCellValue(row, 2, st.SecondName + " " + st.FirstName + " " + st.Patronymic);
+                    sl.SetCellValue(row, 3, st.BirthDate); sl.SetCellStyle(row, 3, stDate);
+                    sl.SetCellValue(row, 4, st.IsBudget ? "Б" : "Д");
+                    sl.SetCellValue(row, 5, st.Group);
+                    sl.SetCellValue(row, 6, st.ContractNum);
+                    sl.SetCellValue(row, 7, st.Room);
+                    sl.SetCellValue(row, 8, st.Address);
+                    sl.SetCellValue(row, 9, st.Passport);
 
-                    sl.SetCellValue("H1", "Список студентов. Факультет " + fac.Name); sl.SetCellStyle("H1", stCenter);
-                    sl.SetCellValue("H2", date); sl.SetCellStyle("H2", stCenter);
-
-                    sl.SetCellValue("A4", "№");
-                    sl.SetCellValue("B4", "ФИО студента");
-                    sl.SetCellValue("C4", "Дата\nрождения");
-                    sl.SetCellValue("D4", "Форма\nобучения");
-                    sl.SetCellValue("E4", "Группа");
-                    sl.SetCellValue("F4", "Договор");
-                    sl.SetCellValue("G4", "Комната");
-                    sl.SetCellValue("H4", "Паспортные данные (серия,№, кем и когда выдан)");
-                    sl.SetCellStyle(4, 1, 4, 9, stHeader);
-                    sl.AutoFitRow(4);
-
-                    int num = 0;
-                    var students = kv.OrderBy(s => s.SecondName);
-                    foreach (var st in students)
-                    {
-                        num++;
-                        int row = num + 4;
-                        sl.SetCellValue(row, 1, num);
-                        sl.SetCellValue(row, 2, st.SecondName + " " + st.FirstName + " " + st.Patronymic);
-                        sl.SetCellValue(row, 3, st.BirthDate); sl.SetCellStyle(row, 3, stDate); sl.SetCellStyle(row, 3, stCenter);
-                        sl.SetCellValue(row, 4, st.IsBudget ? "Б" : "Д"); sl.SetCellStyle(row, 4, stCenter);
-                        sl.SetCellValue(row, 5, st.Speciality.Name);
-                        sl.SetCellValue(row, 6, st.ContractNum); sl.SetCellStyle(row, 6, stCenter);
-                        sl.SetCellValue(row, 7, st.Room); sl.SetCellStyle(row, 7, stCenter);
-                        sl.SetCellValue(row, 8, st.Address);
-                    }
-                    sl.SetCellStyle(4, 1, 4 + num, 9, stTable);
-
-                    sl.AutoFitColumn(1, 9);
-                    sl.FreezePanes(4, 2);
-
-                    firstSheet = false;
+                    sl.SetCellStyle(row, 4, row, 7, stCenter);
                 }
+                sl.SetCellStyle(4, 1, 4 + num, 9, stTable);
 
-                SLPageSettings ps = new SLPageSettings();
-                ps.Orientation = OrientationValues.Landscape;
-                sl.SetPageSettings(ps);
+                sl.AutoFitColumn(1, 9);
+                sl.FreezePanes(4, 2);
 
-                sl.SaveAs(fileName);
+                firstSheet = false;
             }
 
-            Process.Start(fileName);
+            SLPageSettings ps = new SLPageSettings();
+            ps.Orientation = OrientationValues.Landscape;
+            sl.SetPageSettings(ps);
         }
     }
 }

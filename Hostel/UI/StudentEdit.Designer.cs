@@ -57,6 +57,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.cbSpeciality = new System.Windows.Forms.ComboBox();
             this.btEditSpeciality = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbPassport = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbGroup = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudContractNum)).BeginInit();
             this.SuspendLayout();
@@ -134,9 +138,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(285, 62);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 13);
+            this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Паспортные данные";
+            this.label5.Text = "Адрес";
             // 
             // tbAddress
             // 
@@ -310,7 +314,6 @@
             this.btCancel.TabIndex = 12;
             this.btCancel.Text = "Отмена";
             this.btCancel.UseVisualStyleBackColor = true;
-            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // chbIsActive
             // 
@@ -362,12 +365,48 @@
             this.btEditSpeciality.UseVisualStyleBackColor = true;
             this.btEditSpeciality.Click += new System.EventHandler(this.btEditSpeciality_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(285, 137);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(111, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Паспортные данные";
+            // 
+            // tbPassport
+            // 
+            this.tbPassport.Location = new System.Drawing.Point(288, 153);
+            this.tbPassport.MaxLength = 1000;
+            this.tbPassport.Multiline = true;
+            this.tbPassport.Name = "tbPassport";
+            this.tbPassport.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbPassport.Size = new System.Drawing.Size(261, 56);
+            this.tbPassport.TabIndex = 4;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(212, 221);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Группа";
+            // 
+            // tbGroup
+            // 
+            this.tbGroup.Location = new System.Drawing.Point(213, 236);
+            this.tbGroup.Name = "tbGroup";
+            this.tbGroup.Size = new System.Drawing.Size(55, 20);
+            this.tbGroup.TabIndex = 16;
+            // 
             // StudentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btCancel;
             this.ClientSize = new System.Drawing.Size(577, 353);
+            this.Controls.Add(this.tbGroup);
             this.Controls.Add(this.chbRemoved);
             this.Controls.Add(this.chbIsActive);
             this.Controls.Add(this.btAcceptMore);
@@ -381,6 +420,7 @@
             this.Controls.Add(this.cbSpeciality);
             this.Controls.Add(this.cbFaculty);
             this.Controls.Add(this.dtpBirthDate);
+            this.Controls.Add(this.tbPassport);
             this.Controls.Add(this.tbAddress);
             this.Controls.Add(this.tbRoom);
             this.Controls.Add(this.tbPatronymic);
@@ -388,9 +428,11 @@
             this.Controls.Add(this.tbSName);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -401,6 +443,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "StudentEdit";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentEdit";
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).EndInit();
@@ -441,5 +485,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbSpeciality;
         private System.Windows.Forms.Button btEditSpeciality;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbPassport;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tbGroup;
     }
 }

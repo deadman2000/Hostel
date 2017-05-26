@@ -80,6 +80,7 @@ namespace Hostel.Reports
                     tbl.Columns[1].Width = 300.0f;
                     tbl.Columns[2].Width = 50.0f;
                     tbl.Columns[3].Width = 50.0f;
+                    tbl.Columns[3].Width = 50.0f;
 
                     for (var j = 0; j < students.Count; j++)
                     {

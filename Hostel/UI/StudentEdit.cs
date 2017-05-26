@@ -55,7 +55,9 @@ namespace Hostel.UI
                 tbPatronymic.Text = student.Patronymic;
                 dtpBirthDate.Value = student.BirthDate;
                 tbAddress.Text = student.Address;
+                tbPassport.Text = student.Passport;
                 nudYear.Value = student.Year;
+                tbGroup.Text = student.Group;
 
                 if (student.Speciality != null)
                     cbFaculty.SelectedItem = student.Speciality.Faculty;
@@ -72,30 +74,52 @@ namespace Hostel.UI
 
         void UpdateFaculties()
         {
-            object selected = cbFaculty.SelectedItem;
+            var selectedFac = cbFaculty.SelectedItem as Faculty;
+            var selectedSpec = cbSpeciality.SelectedItem as Speciality;
+
             cbFaculty.DataSource = null;
             cbFaculty.DataSource = Store.Inst.Faculties;
-            cbFaculty.SelectedItem = selected;
+            if (selectedFac != null && Store.Inst.Faculties.Contains(selectedFac))
+            {
+                cbFaculty.SelectedItem = selectedFac;
+                if (selectedSpec != null && selectedFac.Specialities.Contains(selectedSpec))
+                    cbSpeciality.SelectedItem = selectedSpec;
+            }
         }
 
-        private void btCancel_Click(object sender, EventArgs e)
+        private void cbFaculty_SelectedValueChanged(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        private void btAccept_Click(object sender, EventArgs e)
-        {
-            if (_editStudent == null)
-                Add();
+            var fac = cbFaculty.SelectedItem as Faculty;
+            if (fac != null)
+                cbSpeciality.DataSource = fac.Specialities;
             else
-                Edit();
-            Close();
+                cbSpeciality.DataSource = null;
         }
 
-        private void btAcceptMore_Click(object sender, EventArgs e)
+        private void btEditFaculty_Click(object sender, EventArgs e)
         {
-            Add();
-            Clear();
+            new FormFaculties().ShowDialog();
+            UpdateFaculties();
+        }
+
+        private void btEditSpeciality_Click(object sender, EventArgs e)
+        {
+            var fac = cbFaculty.SelectedItem as Faculty;
+            if (fac == null) return;
+            new FormSpecialities(fac).ShowDialog();
+            UpdateFaculties();
+        }
+
+        private void chbRemoved_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbRemoved.Checked)
+                chbIsActive.Checked = false;
+        }
+
+        private void chbIsActive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbIsActive.Checked)
+                chbRemoved.Checked = false;
         }
 
         private void Add()
@@ -107,7 +131,9 @@ namespace Hostel.UI
                 Patronymic = tbPatronymic.Text,
                 BirthDate = dtpBirthDate.Value,
                 Address = tbAddress.Text,
+                Passport = tbPassport.Text,
                 Year = (byte)nudYear.Value,
+                Group = tbGroup.Text,
                 Speciality = cbSpeciality.SelectedItem as Speciality,
                 IsBudget = cbContractBudget.SelectedIndex == 1,
                 ContractNum = (int)nudContractNum.Value,
@@ -133,7 +159,9 @@ namespace Hostel.UI
                 _editStudent.Patronymic = tbPatronymic.Text;
                 _editStudent.BirthDate = dtpBirthDate.Value.Date;
                 _editStudent.Address = tbAddress.Text;
+                _editStudent.Passport = tbPassport.Text;
                 _editStudent.Year = (byte)nudYear.Value;
+                _editStudent.Group = tbGroup.Text;
                 _editStudent.Speciality = cbSpeciality.SelectedItem as Speciality;
                 _editStudent.IsBudget = cbContractBudget.SelectedIndex == 1;
                 _editStudent.ContractNum = (int)nudContractNum.Value;
@@ -153,6 +181,8 @@ namespace Hostel.UI
             tbSName.Clear();
             tbPatronymic.Clear();
             tbAddress.Clear();
+            tbPassport.Clear();
+            tbGroup.Clear();
             cbFaculty.SelectedItem = null;
             cbContractBudget.SelectedIndex = -1;
             tbRoom.Clear();
@@ -160,41 +190,19 @@ namespace Hostel.UI
             tbSName.Focus();
         }
 
-        private void btEditFaculty_Click(object sender, EventArgs e)
+        private void btAccept_Click(object sender, EventArgs e)
         {
-            new FormFaculties().ShowDialog();
-            UpdateFaculties();
-        }
-
-        private void chbRemoved_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbRemoved.Checked)
-                chbIsActive.Checked = false;
-        }
-
-        private void chbIsActive_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbIsActive.Checked)
-                chbRemoved.Checked = false;
-        }
-
-        private void cbFaculty_SelectedValueChanged(object sender, EventArgs e)
-        {
-            var fac = cbFaculty.SelectedItem as Faculty;
-            if (fac != null)
-                cbSpeciality.DataSource = fac.Specialities;
+            if (_editStudent == null)
+                Add();
             else
-                cbSpeciality.DataSource = null;
+                Edit();
+            Close();
         }
 
-        private void btEditSpeciality_Click(object sender, EventArgs e)
+        private void btAcceptMore_Click(object sender, EventArgs e)
         {
-            var fac = cbFaculty.SelectedItem as Faculty;
-            if (fac == null) return;
-            new FormSpecialities(fac).ShowDialog();
-
-            cbSpeciality.DataSource = null;
-            cbSpeciality.DataSource = fac.Specialities;
+            Add();
+            Clear();
         }
     }
 }

@@ -186,13 +186,13 @@ namespace Hostel.UI
             form.SelectMode = true;
             if (form.ShowDialog() == DialogResult.OK)
             {
-                FacYearReport.Build(form.SelectedFaculty);
+                new FacYearReport(form.SelectedFaculty).Build();
             }
         }
 
         private void tsmiGraduatesReport_Click(object sender, EventArgs e)
         {
-            GraduatesReport.Build();
+            new GraduatesReport().Build();
         }
 
         #endregion
@@ -222,8 +222,8 @@ namespace Hostel.UI
                 Random rnd = new Random();
                 foreach (var st in Store.Inst.Students)
                 {
-                    //st.Speciality = all[rnd.Next(all.Count)];
-                    //st.Year = (byte)(1 + rnd.Next(st.Speciality.Duration));
+                    st.Speciality = all[rnd.Next(all.Count)];
+                    st.Year = (byte)(1 + rnd.Next(st.Speciality.Duration));
                 }
 
                 MessageBox.Show("Готово");

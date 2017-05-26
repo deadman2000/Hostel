@@ -21,7 +21,7 @@ namespace Hostel.UI
         void Fill()
         {
             lvSpecialities.Items.Clear();
-            foreach (var spec in Store.Inst.Specialities)
+            foreach (var spec in _faculty.Specialities)
                 AddItem(spec);
         }
 

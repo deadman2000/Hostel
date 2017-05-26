@@ -15,7 +15,9 @@ namespace Hostel.Model
             _patronymic = (string)row["patronymic"];
             _birthDate = (DateTime)row["birthdate"];
             _address = (string)row["address"];
+            _passport = (string)row["passport"];
             _year = (byte)(long)row["year"];
+            _group = (string)row["group"];
             if (row["idSpeciality"] != DBNull.Value)
                 _speciality = Store.GetSpeciality((int)(long)row["idSpeciality"]);
             _isBudget = (long)row["budget"] > 0;
@@ -104,6 +106,36 @@ namespace Hostel.Model
             }
         }
 
+        private string _passport;
+        /// <summary>
+        /// Паспортные данные
+        /// </summary>
+        public string Passport
+        {
+            get { return _passport; }
+            set
+            {
+                if (_passport == value) return;
+                _passport = value;
+                UpdateField("passport", value);
+            }
+        }
+
+        private string _group;
+        /// <summary>
+        /// Группа
+        /// </summary>
+        public string Group
+        {
+            get { return _group; }
+            set
+            {
+                if (_group == value) return;
+                _group = value;
+                UpdateField("group", value);
+            }
+        }
+
         private byte _year;
         /// <summary>
         /// Курс
@@ -178,7 +210,7 @@ namespace Hostel.Model
                 UpdateField("room", value);
             }
         }
-        
+
         private bool _isActive;
         /// <summary>
         /// Заселен

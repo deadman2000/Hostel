@@ -59,8 +59,8 @@
             this.tsmiLevel5 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFacReport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRepFacYear = new System.Windows.Forms.ToolStripMenuItem();
-            this.tscbMode = new System.Windows.Forms.ToolStripComboBox();
             this.tsmiGraduatesReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tscbMode = new System.Windows.Forms.ToolStripComboBox();
             tsmiOperations = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHostel)).BeginInit();
             this.cmsStudents.SuspendLayout();
@@ -78,48 +78,48 @@
             this.tsmiDBImport,
             this.tsmiRandomize});
             tsmiOperations.Name = "tsmiOperations";
-            tsmiOperations.Size = new System.Drawing.Size(93, 28);
+            tsmiOperations.Size = new System.Drawing.Size(75, 23);
             tsmiOperations.Text = "Операции";
             // 
             // tsmiAddStudent
             // 
             this.tsmiAddStudent.Name = "tsmiAddStudent";
-            this.tsmiAddStudent.Size = new System.Drawing.Size(297, 26);
+            this.tsmiAddStudent.Size = new System.Drawing.Size(245, 22);
             this.tsmiAddStudent.Text = "Добавить";
             this.tsmiAddStudent.Click += new System.EventHandler(this.tsmiAddStudent_Click);
             // 
             // tsmiEditStudent
             // 
             this.tsmiEditStudent.Name = "tsmiEditStudent";
-            this.tsmiEditStudent.Size = new System.Drawing.Size(297, 26);
+            this.tsmiEditStudent.Size = new System.Drawing.Size(245, 22);
             this.tsmiEditStudent.Text = "Редактировать";
             this.tsmiEditStudent.Click += new System.EventHandler(this.tsmiEditStudent_Click);
             // 
             // tsmiDeleteStudent
             // 
             this.tsmiDeleteStudent.Name = "tsmiDeleteStudent";
-            this.tsmiDeleteStudent.Size = new System.Drawing.Size(297, 26);
+            this.tsmiDeleteStudent.Size = new System.Drawing.Size(245, 22);
             this.tsmiDeleteStudent.Text = "Удалить";
             this.tsmiDeleteStudent.Click += new System.EventHandler(this.tsmiRemoveStudent_Click);
             // 
             // tsmiRemove
             // 
             this.tsmiRemove.Name = "tsmiRemove";
-            this.tsmiRemove.Size = new System.Drawing.Size(297, 26);
+            this.tsmiRemove.Size = new System.Drawing.Size(245, 22);
             this.tsmiRemove.Text = "Выселить";
             this.tsmiRemove.Click += new System.EventHandler(this.tsmiRemove_Click);
             // 
             // tsmiAddYear
             // 
             this.tsmiAddYear.Name = "tsmiAddYear";
-            this.tsmiAddYear.Size = new System.Drawing.Size(297, 26);
+            this.tsmiAddYear.Size = new System.Drawing.Size(245, 22);
             this.tsmiAddYear.Text = "Перевести на следующий курс";
             this.tsmiAddYear.Click += new System.EventHandler(this.tsmiAddYear_Click);
             // 
             // tsmiDBImport
             // 
             this.tsmiDBImport.Name = "tsmiDBImport";
-            this.tsmiDBImport.Size = new System.Drawing.Size(297, 26);
+            this.tsmiDBImport.Size = new System.Drawing.Size(245, 22);
             this.tsmiDBImport.Text = "Импорт";
             this.tsmiDBImport.Visible = false;
             this.tsmiDBImport.Click += new System.EventHandler(this.tsmiDBImport_Click);
@@ -127,7 +127,7 @@
             // tsmiRandomize
             // 
             this.tsmiRandomize.Name = "tsmiRandomize";
-            this.tsmiRandomize.Size = new System.Drawing.Size(297, 26);
+            this.tsmiRandomize.Size = new System.Drawing.Size(245, 22);
             this.tsmiRandomize.Text = "Перемешать";
             this.tsmiRandomize.Click += new System.EventHandler(this.tsmiRandomize_Click);
             // 
@@ -149,14 +149,13 @@
             this.colRoom});
             this.dgvHostel.ContextMenuStrip = this.cmsStudents;
             this.dgvHostel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHostel.Location = new System.Drawing.Point(0, 32);
-            this.dgvHostel.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvHostel.Location = new System.Drawing.Point(0, 27);
             this.dgvHostel.MultiSelect = false;
             this.dgvHostel.Name = "dgvHostel";
             this.dgvHostel.ReadOnly = true;
             this.dgvHostel.RowHeadersVisible = false;
             this.dgvHostel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHostel.Size = new System.Drawing.Size(997, 646);
+            this.dgvHostel.Size = new System.Drawing.Size(748, 524);
             this.dgvHostel.TabIndex = 0;
             this.dgvHostel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHostel_CellDoubleClick);
             // 
@@ -199,33 +198,33 @@
             this.toolStripMenuItem1,
             this.tsmiDeleteStud});
             this.cmsStudents.Name = "cmsStudents";
-            this.cmsStudents.Size = new System.Drawing.Size(154, 88);
+            this.cmsStudents.Size = new System.Drawing.Size(133, 88);
             // 
             // tsmEditStud
             // 
             this.tsmEditStud.Image = global::Hostel.Properties.Resources.pencil;
             this.tsmEditStud.Name = "tsmEditStud";
-            this.tsmEditStud.Size = new System.Drawing.Size(153, 26);
+            this.tsmEditStud.Size = new System.Drawing.Size(132, 26);
             this.tsmEditStud.Text = "Изменить";
             this.tsmEditStud.Click += new System.EventHandler(this.tsmEditStud_Click);
             // 
             // tsmRemoveStud
             // 
             this.tsmRemoveStud.Name = "tsmRemoveStud";
-            this.tsmRemoveStud.Size = new System.Drawing.Size(153, 26);
+            this.tsmRemoveStud.Size = new System.Drawing.Size(132, 26);
             this.tsmRemoveStud.Text = "Выселить";
             this.tsmRemoveStud.Click += new System.EventHandler(this.tsmRemoveStud_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(150, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(129, 6);
             // 
             // tsmiDeleteStud
             // 
             this.tsmiDeleteStud.Image = global::Hostel.Properties.Resources.delete;
             this.tsmiDeleteStud.Name = "tsmiDeleteStud";
-            this.tsmiDeleteStud.Size = new System.Drawing.Size(153, 26);
+            this.tsmiDeleteStud.Size = new System.Drawing.Size(132, 26);
             this.tsmiDeleteStud.Text = "Удалить";
             this.tsmiDeleteStud.Click += new System.EventHandler(this.tsmiDeleteStud_Click);
             // 
@@ -239,15 +238,14 @@
             this.tscbMode});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
-            this.msMain.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.msMain.Size = new System.Drawing.Size(997, 32);
+            this.msMain.Size = new System.Drawing.Size(748, 27);
             this.msMain.TabIndex = 1;
             this.msMain.Text = "menuStrip1";
             // 
             // tsmiFaculties
             // 
             this.tsmiFaculties.Name = "tsmiFaculties";
-            this.tsmiFaculties.Size = new System.Drawing.Size(101, 28);
+            this.tsmiFaculties.Size = new System.Drawing.Size(84, 23);
             this.tsmiFaculties.Text = "Факультеты";
             this.tsmiFaculties.Click += new System.EventHandler(this.tsmiFaculties_Click);
             // 
@@ -260,13 +258,13 @@
             this.tsmiRepFacYear,
             this.tsmiGraduatesReport});
             this.tsmiReports.Name = "tsmiReports";
-            this.tsmiReports.Size = new System.Drawing.Size(71, 28);
+            this.tsmiReports.Size = new System.Drawing.Size(60, 23);
             this.tsmiReports.Text = "Отчеты";
             // 
             // tsmiReportRooms
             // 
             this.tsmiReportRooms.Name = "tsmiReportRooms";
-            this.tsmiReportRooms.Size = new System.Drawing.Size(228, 26);
+            this.tsmiReportRooms.Size = new System.Drawing.Size(190, 22);
             this.tsmiReportRooms.Text = "По комнатам";
             this.tsmiReportRooms.Click += new System.EventHandler(this.tsmiReportRooms_Click);
             // 
@@ -279,57 +277,64 @@
             this.tsmiLevel4,
             this.tsmiLevel5});
             this.поЭтажуToolStripMenuItem.Name = "поЭтажуToolStripMenuItem";
-            this.поЭтажуToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.поЭтажуToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.поЭтажуToolStripMenuItem.Text = "По этажу";
             // 
             // tsmiLevel1
             // 
             this.tsmiLevel1.Name = "tsmiLevel1";
-            this.tsmiLevel1.Size = new System.Drawing.Size(128, 26);
+            this.tsmiLevel1.Size = new System.Drawing.Size(109, 22);
             this.tsmiLevel1.Text = "1 этаж";
             this.tsmiLevel1.Click += new System.EventHandler(this.tsmiLevel1_Click);
             // 
             // tsmiLevel2
             // 
             this.tsmiLevel2.Name = "tsmiLevel2";
-            this.tsmiLevel2.Size = new System.Drawing.Size(128, 26);
+            this.tsmiLevel2.Size = new System.Drawing.Size(109, 22);
             this.tsmiLevel2.Text = "2 этаж";
             this.tsmiLevel2.Click += new System.EventHandler(this.tsmiLevel2_Click);
             // 
             // tsmiLevel3
             // 
             this.tsmiLevel3.Name = "tsmiLevel3";
-            this.tsmiLevel3.Size = new System.Drawing.Size(128, 26);
+            this.tsmiLevel3.Size = new System.Drawing.Size(109, 22);
             this.tsmiLevel3.Text = "3 этаж";
             this.tsmiLevel3.Click += new System.EventHandler(this.tsmiLevel3_Click);
             // 
             // tsmiLevel4
             // 
             this.tsmiLevel4.Name = "tsmiLevel4";
-            this.tsmiLevel4.Size = new System.Drawing.Size(128, 26);
+            this.tsmiLevel4.Size = new System.Drawing.Size(109, 22);
             this.tsmiLevel4.Text = "4 этаж";
             this.tsmiLevel4.Click += new System.EventHandler(this.tsmiLevel4_Click);
             // 
             // tsmiLevel5
             // 
             this.tsmiLevel5.Name = "tsmiLevel5";
-            this.tsmiLevel5.Size = new System.Drawing.Size(128, 26);
+            this.tsmiLevel5.Size = new System.Drawing.Size(109, 22);
             this.tsmiLevel5.Text = "5 этаж";
             this.tsmiLevel5.Click += new System.EventHandler(this.tsmiLevel5_Click);
             // 
             // tsmiFacReport
             // 
             this.tsmiFacReport.Name = "tsmiFacReport";
-            this.tsmiFacReport.Size = new System.Drawing.Size(228, 26);
+            this.tsmiFacReport.Size = new System.Drawing.Size(190, 22);
             this.tsmiFacReport.Text = "По факультетам";
             this.tsmiFacReport.Click += new System.EventHandler(this.tsmiFacReport_Click);
             // 
             // tsmiRepFacYear
             // 
             this.tsmiRepFacYear.Name = "tsmiRepFacYear";
-            this.tsmiRepFacYear.Size = new System.Drawing.Size(228, 26);
+            this.tsmiRepFacYear.Size = new System.Drawing.Size(190, 22);
             this.tsmiRepFacYear.Text = "Факультет по курсам";
             this.tsmiRepFacYear.Click += new System.EventHandler(this.tsmiRepFacYear_Click);
+            // 
+            // tsmiGraduatesReport
+            // 
+            this.tsmiGraduatesReport.Name = "tsmiGraduatesReport";
+            this.tsmiGraduatesReport.Size = new System.Drawing.Size(190, 22);
+            this.tsmiGraduatesReport.Text = "Выпускники";
+            this.tsmiGraduatesReport.Click += new System.EventHandler(this.tsmiGraduatesReport_Click);
             // 
             // tscbMode
             // 
@@ -340,25 +345,17 @@
             "Незаселенные",
             "Выселенные"});
             this.tscbMode.Name = "tscbMode";
-            this.tscbMode.Size = new System.Drawing.Size(160, 28);
+            this.tscbMode.Size = new System.Drawing.Size(121, 23);
             this.tscbMode.SelectedIndexChanged += new System.EventHandler(this.tscbMode_SelectedIndexChanged);
-            // 
-            // tsmiGraduatesReport
-            // 
-            this.tsmiGraduatesReport.Name = "tsmiGraduatesReport";
-            this.tsmiGraduatesReport.Size = new System.Drawing.Size(228, 26);
-            this.tsmiGraduatesReport.Text = "Выпускники";
-            this.tsmiGraduatesReport.Click += new System.EventHandler(this.tsmiGraduatesReport_Click);
             // 
             // FormHostel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(997, 678);
+            this.ClientSize = new System.Drawing.Size(748, 551);
             this.Controls.Add(this.dgvHostel);
             this.Controls.Add(this.msMain);
             this.MainMenuStrip = this.msMain;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormHostel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Общежитие";

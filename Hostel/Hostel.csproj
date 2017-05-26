@@ -79,7 +79,7 @@
     <Compile Include="Reports\FacReport.cs" />
     <Compile Include="Reports\FacYearReport.cs" />
     <Compile Include="Reports\GraduatesReport.cs" />
-    <Compile Include="Reports\ReportUtils.cs" />
+    <Compile Include="Reports\Report.cs" />
     <Compile Include="Reports\RoomReport.cs" />
     <Compile Include="UI\FacultyEditDialog.cs">
       <SubType>Form</SubType>

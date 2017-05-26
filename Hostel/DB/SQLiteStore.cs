@@ -54,8 +54,8 @@ namespace Hostel.DB
 
         private void UpdateDB()
         {
-            //if (!CoumnExists("Students", "passport"))
-                //sql.ExecuteNonQuery("ALTER TABLE Students ADD COLUMN passport TEXT NOT NULL DEFAULT('')");
+            if (!CoumnExists("Students", "passport")) sql.ExecuteNonQuery("ALTER TABLE Students ADD COLUMN passport TEXT NOT NULL DEFAULT('')");
+            if (!CoumnExists("Students", "group")) sql.ExecuteNonQuery("ALTER TABLE Students ADD COLUMN [group] TEXT NOT NULL DEFAULT('')");
         }
 
         private bool CoumnExists(string tableName, string columnName)

@@ -44,7 +44,7 @@ namespace Hostel.Model
             else if (value is IdObject)
                 value = ((IdObject)value).Id;
 
-            SQLiteCommand cmd = new SQLiteCommand("UPDATE " + Table + " SET " + field + "=@V WHERE id=@id");
+            SQLiteCommand cmd = new SQLiteCommand("UPDATE [" + Table + "] SET [" + field + "]=@V WHERE id=@id");
             cmd.Parameters.AddWithValue("@id", _id);
             cmd.Parameters.AddWithValue("@V", value);
             sql.ExecuteNonQuery(cmd);
@@ -52,7 +52,7 @@ namespace Hostel.Model
 
         public void Delete()
         {
-            var cmd = new SQLiteCommand("DELETE FROM " + Table + " WHERE id=@id");
+            var cmd = new SQLiteCommand("DELETE FROM [" + Table + "] WHERE id=@id");
             cmd.Parameters.AddWithValue("@id", _id);
             sql.ExecuteNonQuery(cmd);
             DeleteFromList();
