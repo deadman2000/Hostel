@@ -195,6 +195,11 @@ namespace Hostel.UI
             new GraduatesReport().Build();
         }
 
+        private void tsmiSettlingReport_Click(object sender, EventArgs e)
+        {
+            new SettlingReport().Build();
+        }
+
         #endregion
 
         private void tsmiAddYear_Click(object sender, EventArgs e)
@@ -209,8 +214,15 @@ namespace Hostel.UI
 
         private void tsmiDBImport_Click(object sender, EventArgs e)
         {
-            Importer.Import(@"import.xlsx");
-            RefreshGrid();
+            try
+            {
+                Importer.Import(@"import.xlsx");
+                RefreshGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void tsmiRandomize_Click(object sender, EventArgs e)
@@ -229,5 +241,6 @@ namespace Hostel.UI
                 MessageBox.Show("Готово");
             }
         }
+
     }
 }

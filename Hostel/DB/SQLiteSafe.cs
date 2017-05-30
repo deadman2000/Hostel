@@ -13,9 +13,9 @@ namespace Hostel.DB
         private string _fileName;
         private const int maxConnections = 5;
         private bool _wal;
-        public static bool Log = true;
+        public static bool Log = false;
 
-        public SQLiteSafe(string fileName, bool wal = false)
+        public SQLiteSafe(string fileName, bool wal = true)
         {
             _fileName = fileName;
             _wal = wal;
@@ -54,9 +54,10 @@ namespace Hostel.DB
                 foreach (var c in allConnections)
                 {
                     c.Close();
+                    c.Dispose();
                 }
                 connPool.Clear();
-                connPool.AddRange(allConnections);
+                allConnections.Clear();
             }
         }
 
@@ -138,6 +139,7 @@ namespace Hostel.DB
             }
             finally
             {
+                command.Dispose();
                 ReleaseConnection(conn);
             }
         }
@@ -154,6 +156,7 @@ namespace Hostel.DB
             }
             finally
             {
+                command.Dispose();
                 ReleaseConnection(conn);
             }
         }
@@ -178,6 +181,7 @@ namespace Hostel.DB
             }
             finally
             {
+                command.Dispose();
                 ReleaseConnection(conn);
             }
         }

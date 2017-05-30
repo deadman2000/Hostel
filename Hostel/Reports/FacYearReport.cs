@@ -84,7 +84,7 @@ namespace Hostel.Reports
                     num++;
                     int row = num + 4;
                     sl.SetCellValue(row, 1, num);
-                    sl.SetCellValue(row, 2, st.SecondName + " " + st.FirstName + " " + st.Patronymic);
+                    sl.SetCellValue(row, 2, st.FullName);
                     sl.SetCellValue(row, 3, st.BirthDate); sl.SetCellStyle(row, 3, stDate);
                     sl.SetCellValue(row, 4, st.IsBudget ? "Б" : "Д");
                     sl.SetCellValue(row, 5, st.Group);

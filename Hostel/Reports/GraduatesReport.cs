@@ -39,7 +39,7 @@ namespace Hostel.Reports
                 num++;
                 int row = num + 1;
                 sl.SetCellValue(row, 1, num);
-                sl.SetCellValue(row, 2, st.SecondName + " " + st.FirstName + " " + st.Patronymic);
+                sl.SetCellValue(row, 2, st.FullName);
                 sl.SetCellValue(row, 3, st.Room);
                 sl.SetCellValue(row, 4, st.Group);
             }

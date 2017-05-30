@@ -71,7 +71,9 @@ namespace Hostel.DB
         public void Add(Speciality speciality)
         {
             speciality = StoreSpeciality(speciality);
+            speciality.Faculty.Specialities.Add(speciality);
             _specialities.Add(speciality);
+            _dictSpec.Add(speciality.Id, speciality);
         }
 
         protected abstract Speciality StoreSpeciality(Speciality speciality);
@@ -98,6 +100,7 @@ namespace Hostel.DB
         {
             faculty = StoreFaculty(faculty);
             _faculties.Add(faculty);
+            _dictFac.Add(faculty.Id, faculty);
         }
 
         protected abstract Faculty StoreFaculty(Faculty faculty);

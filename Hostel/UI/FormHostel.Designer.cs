@@ -61,6 +61,7 @@
             this.tsmiRepFacYear = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGraduatesReport = new System.Windows.Forms.ToolStripMenuItem();
             this.tscbMode = new System.Windows.Forms.ToolStripComboBox();
+            this.tsmiSettlingReport = new System.Windows.Forms.ToolStripMenuItem();
             tsmiOperations = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHostel)).BeginInit();
             this.cmsStudents.SuspendLayout();
@@ -121,7 +122,6 @@
             this.tsmiDBImport.Name = "tsmiDBImport";
             this.tsmiDBImport.Size = new System.Drawing.Size(245, 22);
             this.tsmiDBImport.Text = "Импорт";
-            this.tsmiDBImport.Visible = false;
             this.tsmiDBImport.Click += new System.EventHandler(this.tsmiDBImport_Click);
             // 
             // tsmiRandomize
@@ -129,6 +129,7 @@
             this.tsmiRandomize.Name = "tsmiRandomize";
             this.tsmiRandomize.Size = new System.Drawing.Size(245, 22);
             this.tsmiRandomize.Text = "Перемешать";
+            this.tsmiRandomize.Visible = false;
             this.tsmiRandomize.Click += new System.EventHandler(this.tsmiRandomize_Click);
             // 
             // dgvHostel
@@ -256,7 +257,8 @@
             this.поЭтажуToolStripMenuItem,
             this.tsmiFacReport,
             this.tsmiRepFacYear,
-            this.tsmiGraduatesReport});
+            this.tsmiGraduatesReport,
+            this.tsmiSettlingReport});
             this.tsmiReports.Name = "tsmiReports";
             this.tsmiReports.Size = new System.Drawing.Size(60, 23);
             this.tsmiReports.Text = "Отчеты";
@@ -348,6 +350,13 @@
             this.tscbMode.Size = new System.Drawing.Size(121, 23);
             this.tscbMode.SelectedIndexChanged += new System.EventHandler(this.tscbMode_SelectedIndexChanged);
             // 
+            // tsmiSettlingReport
+            // 
+            this.tsmiSettlingReport.Name = "tsmiSettlingReport";
+            this.tsmiSettlingReport.Size = new System.Drawing.Size(190, 22);
+            this.tsmiSettlingReport.Text = "Списки на вселение";
+            this.tsmiSettlingReport.Click += new System.EventHandler(this.tsmiSettlingReport_Click);
+            // 
             // FormHostel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,6 +410,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiLevel2;
         private System.Windows.Forms.ToolStripMenuItem tsmiRandomize;
         private System.Windows.Forms.ToolStripMenuItem tsmiGraduatesReport;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSettlingReport;
     }
 }
 

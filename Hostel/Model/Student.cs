@@ -166,6 +166,10 @@ namespace Hostel.Model
             }
         }
 
+        public Faculty Faculty => _speciality?.Faculty;
+
+        public string FacultyName => _speciality?.Faculty?.Name;
+
         private bool _isBudget;
         /// <summary>
         /// Бюджет / договор
@@ -240,6 +244,8 @@ namespace Hostel.Model
                 UpdateField("isRemoved", value);
             }
         }
+
+        public string FullName => _secondName + " " + _firstName + " " + _patronymic;
 
         public static int CompareBySecondName(Student a, Student b)
         {

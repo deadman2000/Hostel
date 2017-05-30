@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using Hostel.Model;
+using System.Threading;
 
 namespace Hostel.DB
 {
@@ -22,7 +23,18 @@ namespace Hostel.DB
 
         private void CreateDataBase()
         {
-            SQLiteConnection.CreateFile(FileName);
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    SQLiteConnection.CreateFile(FileName);
+                    break;
+                }
+                catch
+                {
+                    Thread.Sleep(10);
+                }
+            }
             sql.ExecuteNonQuery(Properties.Resources.CreateDB);
         }
 
@@ -30,23 +42,51 @@ namespace Hostel.DB
 
         public override void CreateNewDataBase()
         {
-            sql.Close();
-            if (Students.Count > 0)
+            if (sql != null)
             {
-                if (File.Exists(FileName))
-                {
-                    // Make backup
-                    string name = "Hostel.bak";
-                    int i = 0;
-                    while (File.Exists(name))
-                    {
-                        name = "Hostel_" + i + ".bak";
-                        i++;
-                    }
-
-                    File.Move(FileName, name);
-                }
+                sql.Close();
+                sql = null;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
+
+            bool moved = false;
+            for (int c = 0; c < 50; c++)
+                try
+                {
+                    if (Students.Count > 0)
+                    {
+                        if (File.Exists(FileName))
+                        {
+                            // Make backup
+                            string name = "Hostel.bak";
+                            int i = 0;
+                            while (File.Exists(name))
+                            {
+                                name = "Hostel_" + i + ".bak";
+                                i++;
+                            }
+
+                            File.Move(FileName, name);
+                        }
+                    }
+                    else
+                        File.Delete(FileName);
+
+                    Console.WriteLine("Move success");
+                    moved = true;
+                    break;
+                }
+                catch
+                {
+                    Thread.Sleep(100);
+                    Console.WriteLine("Fail move");
+                }
+
+            if (!moved)
+                throw new Exception("Cannot move DB");
+
+            sql = new SQLiteSafe(FileName);
             CreateDataBase();
             UpdateDB();
             InitLists();
